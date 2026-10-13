@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "converge", "converge\converge.csproj", "{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ConvegeSetup", "ConvegeSetup\ConvegeSetup.vdproj", "{F382AADB-9F26-4D2F-A945-A8C39F2F2AD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Debug|x86.ActiveCfg = Debug|x86
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Debug|x86.Build.0 = Debug|x86
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Release|x86.ActiveCfg = Release|x86
+		{AA1585F2-78AE-4EBE-8801-6E2C732E7BC9}.Release|x86.Build.0 = Release|x86
+		{F382AADB-9F26-4D2F-A945-A8C39F2F2AD3}.Debug|Any CPU.ActiveCfg = Debug
+		{F382AADB-9F26-4D2F-A945-A8C39F2F2AD3}.Debug|x86.ActiveCfg = Debug
+		{F382AADB-9F26-4D2F-A945-A8C39F2F2AD3}.Release|Any CPU.ActiveCfg = Release
+		{F382AADB-9F26-4D2F-A945-A8C39F2F2AD3}.Release|x86.ActiveCfg = Release
+		{F382AADB-9F26-4D2F-A945-A8C39F2F2AD3}.Release|x86.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

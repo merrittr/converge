@@ -1,0 +1,386 @@
+http://www.dotnetthoughts.net/2010/02/16/import-data-from-excel-using-c-part-2/
+
+http://codehill.com/2009/01/reading-excel-2003-and-2007-files-using-oledb/
+
+
+
+FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
+
+//1. Reading from a binary Excel file ('97-2003 format; *.xls)
+IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+//...
+//2. Reading from a OpenXml Excel file (2007 format; *.xlsx)
+IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+//...
+//3. DataSet - The result of each spreadsheet will be created in the result.Tables
+DataSet result = excelReader.AsDataSet();
+//...
+//4. DataSet - Create column names from first row
+excelReader.IsFirstRowAsColumnNames = true;
+DataSet result = excelReader.AsDataSet();
+
+//5. Data Reader methods
+while (excelReader.Read())
+{
+	//excelReader.GetInt32(0);
+}
+
+//6. Free resources (IExcelDataReader is IDisposable)
+excelReader.Close();
+
+
+
+
+
+
+
+
+
+
+'Read Excel File Using ADO
+Public Function Read_Excel _
+     (ByVal sFile _
+     As String) As ADODB.Recordset
+
+   On Error GoTo fix_err
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+   Dim sconn As String
+
+   rs.CursorLocation = adUseClient
+   rs.CursorType = adOpenKeyset
+   rs.LockType = adLockBatchOptimistic
+
+   sconn = "DRIVER=Microsoft Excel Driver (*.xls);" & "DBQ=" & sFile
+   rs.Open "SELECT * FROM [sheet1$]", sconn
+   Set Read_Excel = rs
+   Set rs = Nothing
+   Exit Function
+fix_err:
+   Debug.Print Err.Description + " " + _
+         Err.Source, vbCritical, "Import"
+   Err.Clear
+End Function
+
+'*********************************************************************
+'Read Text files
+'You can use Extended Properties='text;FMT=Delimited'"
+'By adding a third argument we can tell ADO that the file doesn't contain headers.
+'The argument named HDR takes YES or NO .
+'connOpen "Provider=Microsoft.Jet" _
+'     & ".OLEDB.4.0;Data Source=" & App.Path _
+'     & ";Extended Properties='text;HDR=NO;" _
+'     & "FMT=Delimited'"
+'You can use Microsoft Text Driver or Microsoft.Jet
+'*********************************************************************
+
+Public Function Read_Text_File() As ADODB.Recordset
+
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+   Dim conn As ADODB.Connection
+   Set conn = New ADODB.Connection
+   conn.Open "DRIVER={Microsoft Text Driver (*.txt; *.csv)};" & _
+         "DBQ=" & App.Path & ";", "", ""
+
+   rs.Open "select * from [test#txt]", conn, adOpenStatic, _
+         adLockReadOnly, adCmdText
+   Set Read_Text_File = rs
+   Set rs = Nothing
+   Set conn = Nothing
+End Function
+
+
+
+
+
+
+
+
+
+  string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Himadri\Desktop\Book1.xls;Extended Properties=""Excel 8.0;HDR=YES;""";
+
+      DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.OleDb");
+
+      DbDataAdapter adapter = factory.CreateDataAdapter();
+
+      DbCommand selectCommand = factory.CreateCommand();
+      selectCommand.CommandText = "SELECT str(Head) FROM [Sheet1$]";
+
+      DbConnection connection = factory.CreateConnection();
+      connection.ConnectionString = connectionString;
+
+      selectCommand.Connection = connection;
+
+      adapter.SelectCommand = selectCommand;
+
+      DataSet cities = new DataSet();
+
+      adapter.Fill(cities);
+
+
+
+
+
+
+
+
+Read    
+  string connectionStr = "Driver={Microsoft Excel Driver (*.xls)};Dbq=yourpath; DriverId=790;readOnly=false;";
+            OdbcConnection con = new OdbcConnection();
+            con.ConnectionString = connectionStr;
+            string excelQuery = "select * from [Sheet1$]";
+            OdbcCommand cmd = con.CreateCommand();
+            cmd.CommandText = excelQuery;
+            try{
+                OdbcDataAdapter dar = new OdbcDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                dar.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+              con.Close();
+            }
+ 
+
+Write
+
+            string connectionStr = "Driver={Microsoft Excel Driver (*.xls)};Dbq=yourpath; DriverId=790;readOnly=false;";
+            OdbcConnection con = new OdbcConnection();
+            con.ConnectionString = connectionStr;
+            string excelQuery = "Insert into [Sheet1$] (f1,f2) values ('a','b')";
+            OdbcCommand cmd = con.CreateCommand();
+            cmd.CommandText = excelQuery;
+            try{
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex){
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+ 
+
+
+
+
+
+OdbcConnection oConn = new OdbcConnection();
+
+oConn.ConnectionString = "Dsn=EXCEL";
+
+OdbcCommand oComm = new OdbcCommand();
+
+oComm.Connection = oConn;
+
+oComm.CommandText = "Select * From [c:\testdata.xls$A1:C3]";
+
+try
+
+{
+
+DataSet ds = new DataSet();
+
+OdbcDataAdapter oAdapter = new OdbcDataAdapter(oComm);
+
+oConn.Open();
+
+oAdapter.Fill(ds);
+
+dataGridView1.DataSource = ds;
+
+dataGridView1.DataMember = ds.Tables[0].TableName;
+
+label1.Text = "Connection established successfully!!!";
+
+}
+
+catch ( Exception caught) { MessageBox.Show(caught.Message); }
+
+// catch (OdbcException caught) { MessageBox.Show(caught.Message); }
+
+finally
+
+{
+
+oConn.Close();
+
+}
+
+ReplyQuote
+Thursday, October 16, 2008 2:34 PM
+Ron.Whittle
+
+ 
+
+0
+Sign In to Vote
+Connection string for ODBC to excel looks like this:
+
+Driver={Microsoft Excel Driver (*.xls)};DriverId=790;Dbq=C:\MyExcel.xls;DefaultDir=c:\mypath;
+
+You can find connection strings at www.connectionstrings.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ private void button3_Click(object sender, EventArgs e)
+        {
+            ConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + textBox1.Text + ";Extended Properties='Excel 8.0;HDR=No'";
+
+            ADODB.Connection myConnect = new ADODB.Connection();
+            ADOX.Catalog myADOX = new ADOX.Catalog();
+
+            myConnect.Open(ConnString, null, null, 0);
+
+            myADOX.ActiveConnection = myConnect;
+            foreach (ADOX.Table sheet in myADOX.Tables)
+            {
+                DataTable dt = ReadExcelSheet(sheet.Name);
+            }
+            myConnect.Close();
+            myADOX.ActiveConnection = null;
+        }
+        //--------------------------------------------------------------------
+        private DataTable ReadExcelSheet(string sheetName)
+        {
+            DataTable dt = new DataTable();
+            OleDbConnection objConn = new OleDbConnection(ConnString);
+            objConn.Open();
+
+
+            if (objConn.State == ConnectionState.Open)
+            {
+                OleDbDataAdapter da;
+                DataSet ds;
+
+                OleDbCommand OldCmd = new OleDbCommand();
+                OldCmd.CommandText = "SELECT * FROM ["+sheetName+"]";
+                OldCmd.CommandTimeout = 120;
+                OldCmd.CommandType = CommandType.Text;
+                OldCmd.Connection = objConn;
+                da = new OleDbDataAdapter();
+                da.SelectCommand = OldCmd;
+                ds = new DataSet();
+
+                da.Fill(ds);
+                dt = ds.Tables[0];
+                objConn.Close();
+
+                int row = 1;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    switch (row)
+                    {
+                        case 1:
+                            if (dt.Rows[i][0].ToString().Trim() == string.Empty)
+                            {
+                                row = 0;
+                                i = i + 8;
+                            }
+                            else
+                            {
+                                Console.Write(dt.Rows[i][0].ToString() + ";" + dt.Rows[i][8].ToString() + ";" + dt.Rows[i][10].ToString() + ";" + dt.Rows[i][13].ToString() + ";");
+                            }
+                            break;
+                        case 3: Console.Write(dt.Rows[i][0].ToString());
+                            break;
+                        case 5: Console.Write(dt.Rows[i][0].ToString());
+                            break;
+                        case 7: Console.Write(dt.Rows[i][0].ToString());
+                            break;
+                        case 9: row = 0;
+                            Console.WriteLine();
+                            break;
+                    }
+                    row++;
+                }
+            }
+            return dt;
+        }
+
+
+
+
+
+
+
+please try this connection string:
+
+
+
+
+
+
+
+ protected override string GetConnectionString()
+        {
+            FileInfo fileInfo = new FileInfo(sFileName);
+            if(fileInfo.Extension == ".xlsx")
+                return "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + sFileName + ";Extended Properties=\"Excel 12.0 Xml;HDR=YES;\"";
+            else
+                return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + sFileName + ";Extended Properties=\"Excel 8.0;HDR=YES;\"";
+        }
+Works great for the Jet.OLEDB.4.0 but for the life of me I cannot get Excel 2007 xlsx files to open.  When it hits the oleDbConnection.Open(), it throws a "External table is not in the expected format" exception.  I have tried numerous variations of the connection string and several different xlsx files, incuding creating a new file with just the first several fields containing data.
+
+Everything I can find on this error seems that people are trying to use the Jet.OLEDB.4.0 driver to open a xlsx file and so it throws this, but when debugging I am 100% sure it is using the ACE.OLEDB.12.0 connection string.
+
+Are my drivers or registry settings messed up maybe?  Any Ideas would be great.
+
+Thanks a lot!
+            ConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + textBox1.Text + ";Extended Properties='Excel 8.0;HDR=No;IMEX=1;'";

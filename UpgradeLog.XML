@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="converge">
+</Property><Property Name="Solution File" Value="C:\Users\robm\Downloads\converge\converge.sln">
+</Property><Property Name="User Options File" Value="C:\Users\robm\Downloads\converge\converge.suo">
+</Property><Property Name="Date" Value="Sunday, November 30, 2014">
+</Property><Property Name="Time" Value="23:15 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="converge.sln" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge.sln">
+</Event><Event ErrorLevel="0" Project="" Source="converge.suo" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge.suo">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\converge.csproj" Description="Project file successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\converge.csproj">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\converge.csproj.user" Description="Project user file successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\converge.csproj.user">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\AskInput.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\AskInput.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\AskInput.Designer.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\AskInput.Designer.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Form1.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Form1.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Form1.Designer.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Form1.Designer.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Program.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Program.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Properties\Resources.Designer.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Properties\Settings.Designer.cs" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\SampleFiles\converge.csv" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\SampleFiles\converge.csv">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\SampleFiles\converge.xls" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\SampleFiles\converge.xls">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\SampleFiles\converge.xlsx" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\SampleFiles\converge.xlsx">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\converge_TemporaryKey.pfx" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\converge_TemporaryKey.pfx">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Properties\Settings.settings" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\SampleFiles\SAMPLE.csv" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\SampleFiles\SAMPLE.csv">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Diamond Pickaxe.ico" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Diamond Pickaxe.ico">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\AskInput.resx" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\AskInput.resx">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Form1.resx" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Form1.resx">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Properties\Resources.resx" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\Circle.ico" Description="File successfully backed up as C:\Users\robm\Downloads\converge\Backup\converge\Circle.ico">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\converge.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="converge" Source="converge\converge.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ConvegeSetup.vdproj" Source="ConvegeSetup\ConvegeSetup.vdproj" Description="Project file successfully backed up as C:\Users\robm\Downloads\converge\Backup\ConvegeSetup\ConvegeSetup.vdproj">
+</Event><Event ErrorLevel="0" Project="" Source="converge.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="converge.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="converge" Source="converge\converge.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
